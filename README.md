@@ -96,11 +96,11 @@ Bearing_A = bearing(0, 2, 'A');
 ```
 The position gives you the point on the beam. Have in mind, that the beam always starts at 0.
 The Value describes what kind of bearing you like. There are three types (1, 2, 3)
-**(1)**
+**(1)**\
 ![Bearing with value 1](doc/bearing1.png) Can only take vertical forces
-**(2)**
+**(2)**\
 ![Bearing with value 2](doc/bearing2.png) Can take vertical and horizontal forces, but **no** torques
-**(3)**
+**(3)**\
 ![Bearing with value 3](doc/bearing3.png) Can take torques, vertical and horizontal forces
 
 ### Pointloads/Forces
