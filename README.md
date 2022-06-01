@@ -1,7 +1,9 @@
 # Symbolic beam calculator for MATLAB
-WORK IN PROGRESS
 
-Documentation on how to use. It's recommended to **look at the given examples** since they are mostly self-explainatory. For still occouring questions you can look further into this documentation.
+Documentation on how to use. It's recommended to **look at the given examples** since they are mostly self-explainatory. For still occouring questions you can look further into this documentation.\
+\
+This toolbox is provided as is with no warrenty and is **only** for personal and educational use.
+
 ## Units
 This beam-solver does not work with units! All units have to be the same and those are also the ones for the solution.
 *Common Units are:*
@@ -62,7 +64,33 @@ mybeam.fullsolve()  % this solves the beam
 ```
 *This can take a while especially when you use symbolic variables.*
 
-## Plotting results
+## Results
+After using *.fullsolve()* the beam-class has all useful information inside of it.
+
+**Shear Force Q(x)**: Formula for the shear force
+```Matlab
+mybeam.Q
+```
+**Bending Moment M(x)**: Formula for the bending moment
+```Matlab
+mybeam.M
+```
+**Bearing Reactions**: Reaction forces and torque of bearing\
+(in the future there will propably be a better way to extract those)
+```Matlab
+% for bearing i
+mybeam.bearings(i).X
+mybeam.bearings(i).Y
+mybeam.bearings(i).Torque
+```
+**Equations Sum of X/Y and Torque**: 
+```Matlab
+mybeam.sumForceX
+mybeam.sumForceY
+mybeam.sumTorque
+```
+
+### Plotting Results
 [```symVars``` and ```numReplace``` must be set beforehand if you use symbolic variables. See [here](#Numerical-Replacements-for-Symbolics)]
 
 Plotting shear force Q(x):
@@ -84,7 +112,7 @@ mybeam.plot_M()  % plotting bending moment
 
 ```
 
-## External influences on beam
+## External Influences on Beam
 Here are all supported external influences described. (bearings, pointloads, torques, lineloads)
 ### Bearings
 To create a bearing use:
@@ -95,13 +123,13 @@ Bearing_A = bearing(position, value, name);
 Bearing_A = bearing(0, 2, 'A');
 ```
 The position gives you the point on the beam. Have in mind, that the beam always starts at 0.
-The Value describes what kind of bearing you like. There are three types (1, 2, 3)
+The Value describes what kind of bearing you like. There are three types (1, 2, 3)\
 **(1)**\
-![Bearing with value 1](doc/bearing1.png) Can only take vertical forces
+![Bearing with value 1](doc/bearing1.png) Can only take vertical forces\
 **(2)**\
-![Bearing with value 2](doc/bearing2.png) Can take vertical and horizontal forces, but **no** torques
+![Bearing with value 2](doc/bearing2.png) Can take vertical and horizontal forces, but **no** torques\
 **(3)**\
-![Bearing with value 3](doc/bearing3.png) Can take torques, vertical and horizontal forces
+![Bearing with value 3](doc/bearing3.png) Can take torques, vertical and horizontal forces\
 
 ### Pointloads/Forces
 A default pointload is defined vertically and is pushing on the beam from above. You can simply add it with two parameters:
@@ -111,7 +139,7 @@ F1 = pointload(position, value);
 % example:
 F1 = pointload(1.2, 73.575);
 ```
-![Pointload Force](doc/force.png)
+![Pointload Force](doc/force.png)\
 You can also add an angle to the given force. Note that the angle is measured from the positive x-direction. (counter clockwise is positive!)
 ```Matlab
 F2 = pointload(position, value, angleDEG);  % angle in degrees
@@ -130,7 +158,7 @@ T1 = torque(position, value)
 % example:
 T1 = torque(3.3, 10);
 ```
-In the visualization only the abolute value gets shown, and the turning direction is depicted with an arrow in the circle.
+In the visualization only the abolute value gets shown, and the turning direction is depicted with an arrow in the circle.\
 ![Torque](doc/torque.png)
 
 ### Lineloads
@@ -151,6 +179,9 @@ L1 = lineload(2.5, 4.0, 0.15*x^2);
 ![Lineload](doc/lineload.png)
 
 ## Useful information
+
+### Matlab Version
+This toolbox was tested in MATLAB R2022a. Versions higher than R2018 should work too.
 
 ### Heaviside Function
 The calculations are made with the heaviside function in MATLAB ([MATLAB dcumentation on the heaviside function](https://de.mathworks.com/help/symbolic/heaviside.html)). This allows to make one function for Q(x) and M(x) without having to split into different beamregions. It's good to understand the heaviside function to better interpret the symbolic solution.
