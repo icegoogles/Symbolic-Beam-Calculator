@@ -57,6 +57,8 @@ To check if your beam-setup is as expected you can plot it before going on. The 
 figure(1); clf; hold on; grid on; axis equal;  % set figure
 mybeam.plot_beam()  % plot into figure
 ```
+<img src="doc/FreeBodyDiagram.png" alt="Shear Force" width="400"/>
+
 ## Solving
 When your beam-setup is correct you can now solve the beam with the following command. With this all forces on the beam get calculated.
 ```Matlab
