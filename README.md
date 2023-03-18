@@ -131,7 +131,7 @@ The Value describes what kind of bearing you like. There are three types (1, 2, 
 **(2)**\
 ![Bearing with value 2](doc/bearing2.png) Can take vertical and horizontal forces, but **no** torques\
 **(3)**\
-![Bearing with value 3](doc/bearing3.png) Can take torques, vertical and horizontal forces\
+![Bearing with value 3](doc/bearing3.png) Can take torques, vertical and horizontal forces
 
 ### Pointloads/Forces
 A default pointload is defined vertically and is pushing on the beam from above. You can simply add it with two parameters:
@@ -186,4 +186,4 @@ L1 = lineload(2.5, 4.0, 0.15*x^2);
 This toolbox was tested in MATLAB R2022a. Versions higher than R2018 should work too.
 
 ### Heaviside Function
-The calculations are made with the heaviside function in MATLAB ([MATLAB dcumentation on the heaviside function](https://de.mathworks.com/help/symbolic/heaviside.html)). This allows to make one function for Q(x) and M(x) without having to split into different beamregions. It's good to understand the heaviside function to better interpret the symbolic solution.
+The calculations are made with the heaviside function in MATLAB ([MATLAB documentation on the heaviside function](https://de.mathworks.com/help/symbolic/heaviside.html)). This allows to make one function for Q(x) and M(x) without having to split into different beamregions. It's good to understand the heaviside function to better interpret the symbolic solution.
